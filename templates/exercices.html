@@ -1,0 +1,99 @@
+
+<ion-view view-title="exercices">
+  <ion-content>
+    <div class="button-bar ">
+      <a class="button button-dark" href="#/app/newExercice">
+        Add
+      </a>
+      <a class="button button-dark">
+        Search
+      </a>
+    </div>
+
+    <label class="item item-input item-select">
+      <div class="input-label">
+        type
+      </div>
+      <select ng-model="search.type">
+        <option disabled selected value></option>
+        <option value="Haltere">Haltere</option>
+        <option value="Poulie" selected>Poulie</option>
+        <option value="Barre">Barre</option>
+        <option value="Poids du corps">Poids du corps</option>
+      </select>
+    </label>
+
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Corps
+      </div>
+      <select ng-model="selected.corps" ng-options="group.name for group in groups">
+        <option value="" ></option>
+      </select>
+    </label>
+
+    <label class="item item-input item-select" ng-hide="!selected.corps ">
+      <div class="input-label">
+        Muscle
+      </div>
+      <select ng-model="selected.muscle" ng-options="muscle for muscle in selected.corps.items">
+        <option value="" ></option>
+      </select>
+    </label>
+    <ion-item class="item-divider item-dark">Default :</ion-item>
+    <ion-list>
+      <div ng-repeat="exercice in exercicesDefault | toArray:false | filter: { type : search.type} | filter: { groupes : selected.muscle }">
+        <ion-item class="item-stable"ng-click="toggleGroup(exercice)"ng-class="{active: isGroupShown(exercice)}">
+          <i class="icon" ng-class="isGroupShown(exercice) ? 'ion-minus' : 'ion-plus'"></i>
+          {{exercice.name}}
+        </ion-item>
+        <ion-list class="item-accordion" ng-show="isGroupShown(exercice)">
+          <ion-item>
+           Description : {{exercice.description}}
+          </ion-item>
+          <ion-item>
+            Type : {{exercice.type}}
+          </ion-item>
+          <ion-item>
+            Muscles :
+            <ion-item ng-repeat="muscle in exercice.groupes">
+              {{muscle}}
+            </ion-item>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-list>
+
+    <ion-item class="item-divider item-dark">Perso :</ion-item>
+    <ion-list>
+      <div ng-repeat="exercice in exercices | toArray:false | filter: { type : search.type} | filter: { groupes : selected.muscle }">
+        <ion-item class="item-stable item-button-right" ng-class="{active: isGroupShown(exercice)}">
+          <i class="icon" ng-click="toggleGroup(exercice)" ng-class="isGroupShown(exercice) ? 'ion-minus' : 'ion-plus'"></i>
+          <a ng-click="toggleGroup(exercice)"> {{exercice.name}}</a>
+          <div class="buttons">
+            <button class="button button-icon ion-wrench" ui-sref="app.changeExercice({data : exercice})"> </button>
+            <button class="button button-icon ion-trash-b" ng-click="delete(exercice)"> </button>
+          </div>
+          <!-- <a class="button button-small button-dark"><i class="icon" ng-class="'ion-wrench'"></i> </a> -->
+        </ion-item>
+        <ion-list class="item-accordion" ng-show="isGroupShown(exercice)">
+          <ion-item>
+           Description : {{exercice.description}}
+          </ion-item>
+          <ion-item>
+            Type : {{exercice.type}}
+          </ion-item>
+          <ion-item>
+            Muscles :
+            <ion-item ng-repeat="muscle in exercice.groupes">
+              {{muscle}}
+            </ion-item>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-list>
+
+
+
+  </ion-content>
+</ion-view>

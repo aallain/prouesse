@@ -1,0 +1,35 @@
+
+<ion-view view-title="programmes">
+  <ion-content>
+    <div class="button-bar ">
+      <a class="button button-dark" href="#/app/newProgramme">
+        Add
+      </a>
+      <a class="button button-dark">?</a>*
+    </div>
+
+    <ion-list>
+      <div ng-repeat="programme in programmes">
+        <ion-item  class="item-stable item-button-right">
+          <i class="icon" ng-click="toggleGroup(programme)" ng-class="isGroupShown(programme) ? 'ion-minus' : 'ion-plus'"></i>
+          <a ng-click="toggleGroup(programme)">{{programme.name}}</a>
+          <div class="buttons">
+            <button class="button button-icon ion-wrench" ui-sref="app.changeProgramme({data : programme})"> </button>
+            <button class="button button-icon ion-trash-b" ng-click="delete(programme)"> </button>
+          </div>
+        </ion-item>
+        <ion-list  class="item-accordion" ng-show="isGroupShown(programme)">
+          <ion-item>
+            Description : {{programme.description}}
+          </ion-item>
+          <ion-item>
+            Seances :
+            <ion-item ng-repeat="seance in programme.seances">
+              {{seance.name}}
+            </ion-item>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

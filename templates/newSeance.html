@@ -1,0 +1,83 @@
+<ion-view view-title="new seance">
+  <ion-content>
+    <form>
+      <ion-item class="item-divider item-dark">Informations :</ion-item>
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="data.name" placeholder="...">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Description</span>
+          <input type="text" ng-model="data.description" placeholder="...">
+        </label>
+        <ion-item class="item-divider item-dark">Exercices :</ion-item>
+        <ion-list>
+
+          <ion-list>
+            <ion-item class="item-button-right" ng-repeat="exercice in data.exercices ">
+              <div class="buttons">
+                <button class="button button-icon ion-trash-b " ng-click="deleteExercice(exercice)"> </button>
+              </div>
+              {{exercice.name}}
+            </ion-item>
+          </ion-list>
+
+        </ion-list>
+
+        <ion-item class="item-divider item-dark">Search :</ion-item>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            type
+          </div>
+          <select ng-model="search.type">
+            <option selected value = "_"></option>
+            <option value="Haltere">Haltere</option>
+            <option value="Poulie" selected>Poulie</option>
+            <option value="Barre">Barre</option>
+            <option value="Poids du corps">Poids du corps</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Corps
+          </div>
+          <select ng-model="selected.corps" ng-options="group.name for group in groups">
+            <option selected value = "_" ></option>
+          </select>
+        </label>
+        <label class="item item-input item-select" ng-hide="!selected.corps ">
+          <div class="input-label">
+            Muscle
+          </div>
+          <select ng-model="selected.muscle" ng-options="muscle for muscle in selected.corps.items">
+            <option selected value = "_" ></option>
+          </select>
+        </label>
+        <ion-item class="item-divider item-dark">Add exercices :</ion-item>
+        <ion-list>
+          <ion-item class="item-button-right" ng-repeat="exerciceDefault in exercicesDefault | difference: data.exercices | toArray:false | filter: { type : search.type, groupes : selected.muscle, hide : false }  ">
+            <div class="buttons">
+              <button class="button button-icon ion-archive " ng-style="{'color': (checkIfExerciceIsSave(exerciceDefault)) ? 'red' : 'black'}" ng-click="addExercice(exerciceDefault)"> </button>
+            </div>
+            {{exerciceDefault.name}}
+          </ion-item>
+
+          <ion-item class="item-button-right" ng-repeat="exercice in exercices | difference: data.exercices | toArray:false | filter: { type : search.type, groupes : selected.muscle, hide : false  } ">
+            <div class="buttons">
+              <button class="button button-icon ion-archive"  ng-style="{'color': (checkIfExerciceIsSave(exercice)) ? 'red' : 'black'}" ng-click="addExercice(exercice)"> </button>
+            </div>
+            {{exercice.name}}
+          </ion-item>
+
+        </ion-list>
+
+        <div class="button-bar ">
+          <a class="button button-block button-dark" ng-click="save()">save</a>
+          <a class="button button-block button-dark" ui-sref="app.seances">cancel</a>
+        </div>
+
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

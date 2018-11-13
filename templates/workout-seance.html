@@ -1,0 +1,63 @@
+<ion-view view-title="{{seance.name}}">
+  <ion-content>
+    <form>
+      <ion-list>
+        <ion-item>
+          Description : {{seance.description}}
+        </ion-item>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            type
+          </div>
+          <select ng-msodel="search.type">
+            <option value="Strenght">Strenght</option>
+            <option selected value="Mass" selected>Mass</option>
+            <option value="Endurance">Endurance</option>
+          </select>
+        </label>
+        <ion-list>
+          <div ng-repeat="exercice in seance.exercices ">
+            <ion-item class="item-stable item-button-right"ng-click="toggleGroup(exercice)"ng-class="{active: isGroupShown(exercice)}">
+              <i class="icon" ng-class="isGroupShown(exercice) ? 'ion-minus' : 'ion-plus'"></i>
+              <div class="buttons">
+                <button class="button button-icon ion-checkmark" ui-sref="app.changeSeance({data : seance})"> </button>
+                <button class="button button-icon ion-trash-b" ng-click="delete(seance)"> </button>
+              </div>
+              {{exercice.name}}
+            </ion-item>
+            <ion-list class="item-accordion" ng-show="isGroupShown(exercice)">
+              <ion-item>
+               Description : {{exercice.description}}
+              </ion-item>
+              <ion-item>
+                Type : {{exercice.type}}
+              </ion-item>
+              <label class="item item-input ">
+                <span class="input-label">Sets </span>
+                <input type="number" min="1" max="10" ng-model="data.nb_sets" ng-change="updateSets()" placeholder="...">
+              </label>
+              <div ng-repeat="set in data.sets track by $index">
+                <label class="item item-input">
+                  <span class="input-label" ng-model="data.set.rep">Reps</span>
+                  <input type="text" placeholder="...">
+                  <span class="input-label" ng-model="data.set.rep">Weight</span>
+                  <input type="text" placeholder="...">
+                </label>
+              </div>
+              <!-- <ion-item>
+                Muscles :
+                <ion-item ng-repeat="muscle in exercice.groupes">
+                  {{muscle}}
+                </ion-item>
+              </ion-item> -->
+            </ion-list>
+          </div>
+        </ion-list>
+      </ion-list>
+      <div class="button-bar ">
+        <a class="button button-block button-dark" ng-click="save()">save</a>
+        <a class="button button-block button-dark" ui-sref="app.workout">cancel</a>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

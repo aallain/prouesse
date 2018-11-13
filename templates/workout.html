@@ -1,0 +1,26 @@
+<ion-view view-title="Workout">
+  <ion-content>
+    <ion-list>
+      <div ng-repeat="programme in programmes">
+        <ion-item  class="item-stable">
+          <i class="icon" ng-click="toggleGroup(programme)" ng-class="isGroupShown(programme) ? 'ion-minus' : 'ion-plus'"></i>
+          <a ng-click="toggleGroup(programme)">{{programme.name}}</a>
+          <div class="buttons">
+          </div>
+        </ion-item>
+        <ion-list  class="item-accordion" ng-show="isGroupShown(programme)">
+          <ion-item>
+            Description : {{programme.description}}
+          </ion-item>
+          <ion-item>
+            Seances :
+            <ion-item ng-repeat="seance in programme.seances" class="item-stable item-button-right">
+              <button class="button button-icon ion-arrow-right-c" ui-sref="app.workout-seance({data: seance})"> </button>
+              {{seance.name}}
+            </ion-item>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>
