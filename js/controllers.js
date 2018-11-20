@@ -94,7 +94,7 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('NewProgrammesCtrl', function($scope,  $state, ProgrammeFactory, SeanceFactory) {
+.controller('ProgrammeCreateCtrl', function($scope,  $state, ProgrammeFactory, SeanceFactory) {
   $scope.$on("$ionicView.enter", function(){
     $scope.data = {};
     $scope.programmes = ProgrammeFactory.programmes();
@@ -122,7 +122,7 @@ angular.module('app.controllers', [])
   }
 })
 
-.controller('EditProgrammeCtrl', function($scope,  $state, $stateParams, SeanceFactory, ProgrammeFactory) {
+.controller('ProgrammeEditCtrl', function($scope,  $state, $stateParams, SeanceFactory, ProgrammeFactory) {
   $scope.$on("$ionicView.enter", function(){
     $scope.data = $stateParams.data;
     $scope.data.seances = $stateParams.data.seances;
@@ -362,12 +362,20 @@ angular.module('app.controllers', [])
   };
 })
 
-.controller('WorkoutSeanceCtrl', function($scope, $state, $stateParams, SeanceFactory) {
+.controller('WorkoutSeanceCtrl', function($scope, $state, $stateParams, $ionicPopup, SeanceFactory, WorkoutFactory, ExerciceFactory) {
   $scope.$on("$ionicView.enter", function(){
-    $scope.data = {};
-    $scope.seance =  $stateParams.data;
-    $scope.data.nb_sets = 1;
+    $scope.workout = Object.assign({}, $stateParams.data);
+    $scope.set = {};
+    $scope.workout.name += '-' + getCurrentDate();
+    $scope.exercicesDefault = ExerciceFactory.exercicesDefault();
+    $scope.exercices = ExerciceFactory.exercices();
+    $scope.groups = ExerciceFactory.groups();
   });
+
+  let getCurrentDate = function() {
+    const today = new Date();
+    return today.getFullYear() + '-' + ('0' + (  today.getMonth() + 1)).slice(-2) + '-' + ('0' +   today.getDate()).slice(-2);
+  }
 
   $scope.toggleGroup = function(list) {
     if ($scope.isGroupShown(list)) {
@@ -381,7 +389,87 @@ angular.module('app.controllers', [])
     return $scope.shownGroup === list;
   };
 
-  $scope.updateSets = function () {
-      $scope.data.sets = new Array($scope.data.nb_sets);
-  }
+  $scope.isSetComplete = function(set) {
+    return $scope.shownGroup === set;
+  };
+
+  $scope.updateIconExo = function (exercice) {
+    if ( ! exercice.hasOwnProperty("sets"))
+      return false;
+    for (set of exercice.sets) {
+      if (angular.equals({}, set))
+        return false;
+      if (!set.rep)
+        return false;
+      if (!set.weight)
+        return false;
+    }
+    return true;
+  };
+
+  $scope.updateSets = function (exercice) {
+    exercice.sets = new Array(exercice.nb_sets);
+    for (var i = 0; i < exercice.sets.length; i++) {
+      exercice.sets[i] = {};
+    }
+  };
+
+  $scope.save = function() {
+    if (Object.keys($scope.workout).length !== 0){
+      WorkoutFactory.createOrUpdateWorkout($scope.workout);
+      $state.go("app.workout");
+    }
+  };
+
+  $scope.delete = function(exercice ) {
+    let confirmPopup = $ionicPopup.confirm({
+      title: 'Deleting exercice',
+      template: 'Are you sure you want to delete '+ exercice.name +' for this workout ?'
+    });
+    confirmPopup.then(function(res) {
+      if(res) {
+        delete $scope.workout.exercices[exercice.name];
+      }
+    });
+  };
+
+  $scope.addExercice = function(exercice){
+    if ( ! (exercice.name in $scope.workout.exercices) ) {
+      $scope.workout.exercices[exercice.name] = exercice;
+    }
+  };
+
+})
+
+.controller('HistoryCtrl', function($scope, ProgrammeFactory, $ionicPopup, WorkoutFactory) {
+  $scope.$on("$ionicView.enter", function(){
+    $scope.programmes =  ProgrammeFactory.programmes();
+    $scope.workoutHistory = WorkoutFactory.workoutHistory();
+    console.log($scope.workoutHistory);
+  });
+  $scope.toggleGroup = function(list) {
+    if ($scope.isGroupShown(list)) {
+      $scope.shownGroup = null;
+    } else {
+      $scope.shownGroup = list;
+    }
+  };
+
+  $scope.isGroupShown = function(list) {
+    return $scope.shownGroup === list;
+  };
+
+  $scope.delete = function(workout) {
+    let confirmPopup = $ionicPopup.confirm({
+      title: 'Deleting workout',
+      template: 'Are you sure you want to delete '+ workout.name +'?'
+    });
+    confirmPopup.then(function(res) {
+      if(res) {
+        WorkoutFactory.deleteWorkout(workout.name);
+        $scope.workoutHistory = WorkoutFactory.workoutHistory();
+      }
+    });
+  };
+
 })

@@ -1,4 +1,7 @@
 <ion-view view-title="edit exercice">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-icon icon ion-android-add" ng-click="save()"></button>
+  </ion-nav-buttons>
   <ion-content>
     <form>
       <div class="list">
@@ -47,7 +50,6 @@
           </div>
         </ion-list>
         <div class="button-bar ">
-          <a class="button button-block button-dark" ng-click="save()">sauvegarder</a>
           <a class="button button-block button-dark" ui-sref="app.exercices">cancel</a>
         </div>
       </div>

@@ -10,60 +10,22 @@ angular.module('app.routes', [])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.programme_create', {
+    url: '/programme_create',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/programme_create.html',
+        controller: 'ProgrammeCreateCtrl'
       }
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-
-  .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
+  .state('app.programme_edit', {
+    url: '/programme_edit',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  })
-
-  .state('app.newProgramme', {
-    url: '/newProgramme',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/newProgramme.html',
-        controller: 'NewProgrammesCtrl'
-      }
-    }
-  })
-
-  .state('app.changeProgramme', {
-    url: '/$scope.dataProgramme',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/changeProgramme.html',
-        controller: 'EditProgrammeCtrl'
+        templateUrl: 'templates/programme_edit.html',
+        controller: 'ProgrammeEditCtrl'
       }
     },
     params: {
@@ -173,6 +135,15 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('app.history', {
+    url: '/history',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/history.html',
+        controller: 'HistoryCtrl'
+      }
+    }
+  })
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/programmes');
 })

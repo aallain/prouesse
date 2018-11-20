@@ -1,13 +1,10 @@
 
 <ion-view view-title="seances">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-icon icon ion-android-add" ui-sref="app.newSeance"></button>
+  </ion-nav-buttons>
   <ion-content>
-    <div class="button-bar ">
-      <a class="button button-dark" href="#/app/newSeance">
-        Add
-      </a>
-      <a class="button button-dark">?</a>*
-    </div>
-
+    
     <ion-list>
       <div ng-repeat="seance in seances">
         <ion-item  class="item-stable item-button-right">

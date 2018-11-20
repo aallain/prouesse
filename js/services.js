@@ -3,22 +3,25 @@ angular.module('app.services', [])
 .factory('ExerciceFactory', ['$localStorage', function($localStorage){
 
   $localStorage.exercicesDefault = {
-    'Curl':{name: "Curl", description: "Curl", type: "Barre", groupes:
-        ["Biceps"]},
+    'Curl':{name: "Curl", description: "Curl", type: "Barre", groupes:["Biceps"]},
+    'Curl marteau halteres':{name: "Curl marteau halteres", description: "Curl marteau halteres", type: "Haltere", groupes:["Biceps"]},
     'Developer couché':{name: "Developer couché", description: "Developer couché", type: "Barre", groupes: ["Pecs"]},
     'Developer couché incliné':{name: "Developer couché incliné", description: "Developer couché", type: "Barre", groupes: ["Pecs"]},
     'Developer couché desincliné':{name: "Developer couché desincliné", description: "Developer couché", type: "Barre", groupes: ["Pecs"]},
     'Triceps poulie barre':{name: "Triceps poulie barre", description: "Triceps poulie", type: "Poulie", groupes: ["Triceps"]},
     'Triceps poulie corde':{name: "Triceps poulie corde", description: "Triceps poulie", type: "Poulie", groupes: ["Triceps"]},
-    'Traction':{name: "Traction", description: "", type: "Poids du corps", groupes: ["Dos"]},
-    'Dos poulie':{name: "Dos poulie", description: "", type: "Poulie", groupes: ["Dos"]},
+    'Traction':{name: "Traction", description: "Traction", type: "Poids du corps", groupes: ["Dos"]},
+    'Tirage horizontal':{name: "Tirage horizontal", description: "Tirage horizontal", type: "Poulie", groupes: ["Dos"]},
+    'Tirage vertical':{name: "Tirage vertical", description: "Tirage vertical", type: "Poulie", groupes: ["Dos"]},
+    'Priere':{name: "Priere", description: "Priere", type: "Poulie", groupes: ["Dos"]},
+    'Papillon':{name: "Papillon", description: "élevation des haltère buste incliné vers l'avant", type: "Haltere", groupes: ["Epaules"]},
     'Squat':{name: "Squat", description: "", type: "Poids du corps", groupes: ["Autre Jambe","Quadriceps"]},
 
   };
 
   let groups = [
       {name:'Bras',items:['Biceps','Triceps','Autre Bras']},
-      {name:'Tronc',items:['Pecs','Dos','Epaules','Abdos', 'Autre Tronc']},
+      {name:'Buste',items:['Pecs','Dos','Epaules','Abdos', 'Autre Tronc']},
       {name:'Jambe',items:['Quadriceps','Ischio','Mollet','Autre Jambe']}
     ];
 
@@ -169,5 +172,49 @@ angular.module('app.services', [])
     createOrUpdateSeance: createOrUpdateSeance,
     seances: ()=>{return $localStorage.seances;},
     exercicesSave: ()=>{return $localStorage.exercicesSave;},
+  };
+
+}])
+
+.factory('WorkoutFactory', ['$localStorage', function($localStorage){
+  if ($localStorage.workoutHistory === undefined) {
+    $localStorage.workoutHistory = {};
+  };
+
+  let createOrUpdateWorkout = function(workout){
+
+    if (workout.name in $localStorage.workoutHistory){
+      changeWorkoutHistory(workout);
+    } else {
+      createWorkoutHistory(workout);
+    }
+  };
+
+  let createWorkoutHistory = function(data){
+    if ($localStorage.workoutHistory.hasOwnProperty(data.name)) {
+      // cet exo existe deja
+      console.log($localStorage.workoutHistory);
+    } else {
+      $localStorage.workoutHistory[data.name] = data;
+      console.log($localStorage.workoutHistory);
+    }
+  };
+
+  let changeWorkoutHistory = function(data,name){
+    //console.log($localStorage.workoutHistory[data.name])
+    $localStorage.workoutHistory[data.name] = data;
+  };
+
+  let deleteWorkout = function(workoutName){
+    delete $localStorage.workoutHistory[workoutName];
   }
+
+  return{
+    changeWorkoutHistory : changeWorkoutHistory,
+    createWorkoutHistory : createWorkoutHistory,
+    createOrUpdateWorkout : createOrUpdateWorkout,
+    deleteWorkout : deleteWorkout,
+    workoutHistory: ()=>{return $localStorage.workoutHistory;},
+    WorkoutSeances: ()=>{return $localStorage.WorkoutSeances;},
+  };
 }])

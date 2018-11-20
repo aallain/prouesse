@@ -25,3 +25,7 @@ angular.module('app', ['ionic', 'ngStorage', 'app.controllers', 'app.directives'
     }
   });
 })
+.config(function($ionicConfigProvider){
+  $ionicConfigProvider.views.maxCache(0);
+
+})

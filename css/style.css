@@ -17,3 +17,13 @@
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
 }
+
+.button-ok{
+  color : #387ef5;
+  /* positive */
+}
+
+.button-nok{
+  color : #f8f8f8;
+  /* stable */
+}

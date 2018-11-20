@@ -1,20 +1,15 @@
-
 <ion-view view-title="programmes">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-icon icon ion-android-add" ui-sref="app.programme_create"></button>
+  </ion-nav-buttons>
   <ion-content>
-    <div class="button-bar ">
-      <a class="button button-dark" href="#/app/newProgramme">
-        Add
-      </a>
-      <a class="button button-dark">?</a>*
-    </div>
-
     <ion-list>
       <div ng-repeat="programme in programmes">
         <ion-item  class="item-stable item-button-right">
           <i class="icon" ng-click="toggleGroup(programme)" ng-class="isGroupShown(programme) ? 'ion-minus' : 'ion-plus'"></i>
           <a ng-click="toggleGroup(programme)">{{programme.name}}</a>
           <div class="buttons">
-            <button class="button button-icon ion-wrench" ui-sref="app.changeProgramme({data : programme})"> </button>
+            <button class="button button-icon ion-wrench" ui-sref="app.programme_edit({data : programme})"> </button>
             <button class="button button-icon ion-trash-b" ng-click="delete(programme)"> </button>
           </div>
         </ion-item>

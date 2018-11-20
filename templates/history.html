@@ -1,0 +1,33 @@
+<ion-view view-title="History">
+  <ion-content>
+    <ion-list>
+      <div ng-repeat="workout in workoutHistory">
+        <ion-item  class="item-stable item-button-right"">
+          <i class="icon" ng-click="toggleGroup(workout)" ng-class="isGroupShown(workout) ? 'ion-minus' : 'ion-plus'"></i>
+          <a ng-click="toggleGroup(workout)">{{workout.name}}</a>
+          <div class="buttons">
+            <button class="button button-icon ion-wrench" ui-sref="app.workout-seance({data : workout})"> </button>
+            <button class="button button-icon ion-trash-b" ng-click="delete(workout)"> </button>
+          </div>
+        </ion-item>
+        <ion-list  class="item-accordion" ng-show="isGroupShown(workout)">
+          <ion-item>
+            Description : {{workout.description}}
+          </ion-item>
+          <ion-item>
+            Exercice :
+            <ion-item ng-repeat="exercice in workout.exercices">
+              {{exercice.name}}
+              <div ng-repeat="set in exercice.sets">
+                <ion-item>
+                  rep : {{set.rep}}
+                  weight : {{set.weight}}
+                </ion-item>
+              </div>
+            </ion-item>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

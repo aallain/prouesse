@@ -1,4 +1,7 @@
 <ion-view view-title="new seance">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-icon icon ion-android-add" ng-click="save()"></button>
+  </ion-nav-buttons>
   <ion-content>
     <form>
       <ion-item class="item-divider item-dark">Informations :</ion-item>
@@ -73,7 +76,6 @@
         </ion-list>
 
         <div class="button-bar ">
-          <a class="button button-block button-dark" ng-click="save()">save</a>
           <a class="button button-block button-dark" ui-sref="app.seances">cancel</a>
         </div>
 
