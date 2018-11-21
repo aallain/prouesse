@@ -1,19 +1,15 @@
-
 <ion-view view-title="exercices">
+
   <ion-nav-buttons side="right" class="has-header">
-    <button class="button button-icon icon ion-android-add" ui-sref="app.newExercice"></button>
+    <button class="button button-icon icon ion-android-add" ui-sref="app.exercice_create"></button>
   </ion-nav-buttons>
+
   <ion-content>
     <label class="item item-input item-select">
       <div class="input-label">
         type
       </div>
-      <select ng-model="search.type">
-        <option disabled selected value></option>
-        <option value="Haltere">Haltere</option>
-        <option value="Poulie" selected>Poulie</option>
-        <option value="Barre">Barre</option>
-        <option value="Poids du corps">Poids du corps</option>
+      <select ng-model="search.type" ng-options="type for type in types">
       </select>
     </label>
 
@@ -21,8 +17,7 @@
       <div class="input-label">
         Corps
       </div>
-      <select ng-model="selected.corps" ng-options="group.name for group in groups">
-        <option value="" ></option>
+      <select ng-model="selected.corps" ng-options="key for (key, value) in groups">
       </select>
     </label>
 
@@ -30,43 +25,19 @@
       <div class="input-label">
         Muscle
       </div>
-      <select ng-model="selected.muscle" ng-options="muscle for muscle in selected.corps.items">
-        <option value="" ></option>
+      <select ng-model="selected.muscle" ng-options="muscle for muscle in selected.corps">
       </select>
     </label>
-    <ion-item class="item-divider item-dark">Default :</ion-item>
-    <ion-list>
-      <div ng-repeat="exercice in exercicesDefault | toArray:false | filter: { type : search.type} | filter: { groupes : selected.muscle }">
-        <ion-item class="item-stable"ng-click="toggleGroup(exercice)"ng-class="{active: isGroupShown(exercice)}">
-          <i class="icon" ng-class="isGroupShown(exercice) ? 'ion-minus' : 'ion-plus'"></i>
-          {{exercice.name}}
-        </ion-item>
-        <ion-list class="item-accordion" ng-show="isGroupShown(exercice)">
-          <ion-item>
-           Description : {{exercice.description}}
-          </ion-item>
-          <ion-item>
-            Type : {{exercice.type}}
-          </ion-item>
-          <ion-item>
-            Muscles :
-            <ion-item ng-repeat="muscle in exercice.groupes">
-              {{muscle}}
-            </ion-item>
-          </ion-item>
-        </ion-list>
-      </div>
-    </ion-list>
 
-    <ion-item class="item-divider item-dark">Perso :</ion-item>
+    <ion-item class="item-divider item-dark"></ion-item>
     <ion-list>
-      <div ng-repeat="exercice in exercices | toArray:false | filter: { type : search.type} | filter: { groupes : selected.muscle }">
+      <div ng-repeat="exercice in exercices | toArray:false | filter: { type : search.type} | filter: { groups : selected.muscle }">
         <ion-item class="item-stable item-button-right" ng-class="{active: isGroupShown(exercice)}">
           <i class="icon" ng-click="toggleGroup(exercice)" ng-class="isGroupShown(exercice) ? 'ion-minus' : 'ion-plus'"></i>
           <a ng-click="toggleGroup(exercice)"> {{exercice.name}}</a>
           <div class="buttons">
-            <button class="button button-icon ion-wrench" ui-sref="app.changeExercice({data : exercice})"> </button>
-            <button class="button button-icon ion-trash-b" ng-click="delete(exercice)"> </button>
+            <button class="button button-icon ion-wrench" ng-hide="exercice.default" ui-sref="app.exercice_edit({exercice : exercice})"> </button>
+            <button class="button button-icon ion-trash-b" ng-hide="exercice.default" ng-click="remove(exercice)"> </button>
           </div>
           <!-- <a class="button button-small button-dark"><i class="icon" ng-class="'ion-wrench'"></i> </a> -->
         </ion-item>
@@ -79,7 +50,7 @@
           </ion-item>
           <ion-item>
             Muscles :
-            <ion-item ng-repeat="muscle in exercice.groupes">
+            <ion-item ng-repeat="muscle in exercice.groups">
               {{muscle}}
             </ion-item>
           </ion-item>

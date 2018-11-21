@@ -10,6 +10,83 @@ angular.module('app.routes', [])
     controller: 'AppCtrl'
   })
 
+  .state('app.exercices', {
+      url: '/exercices',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/exercices.html',
+          controller: 'ExercicesCtrl'
+        }
+      }
+    })
+
+  .state('app.exercice_create', {
+    url: '/exercice_create',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/exercice_create.html',
+        controller: 'ExerciceCreateCtrl'
+      }
+    }
+  })
+
+  .state('app.exercice_edit', {
+    url: '/exercice_edit',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/exercice_edit.html',
+        controller: 'ExerciceEditCtrl'
+      }
+    },
+    params: {
+      exercice: null
+    }
+  })
+
+  .state('app.seances', {
+    url: '/seances',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/seances.html',
+        controller: 'SeancesCtrl'
+      }
+    }
+  })
+
+  .state('app.seance_create', {
+    url: '/seance_create',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/seance_create.html',
+        controller: 'SeanceCreateCtrl'
+      }
+    }
+  })
+
+  .state('app.seance_edit', {
+    url: '/seance_edit',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/seance_edit.html',
+        controller: 'SeanceEditCtrl'
+      }
+    },
+    params: {
+      seance: null
+    }
+  })
+
+  .state('app.programmes', {
+    url: '/programmes',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/programmes.html',
+        controller: 'ProgrammesCtrl'
+      }
+    }
+
+  })
+
   .state('app.programme_create', {
     url: '/programme_create',
     views: {
@@ -29,86 +106,7 @@ angular.module('app.routes', [])
       }
     },
     params: {
-      data: null
-    }
-  })
-
-  .state('app.programmes', {
-    url: '/programmes',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/programmes.html',
-        controller: 'ProgrammesCtrl'
-      }
-    }
-
-  })
-
-
-  .state('app.newSeance', {
-    url: '/newSeance',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/newSeance.html',
-        controller: 'NewSeanceCtrl'
-      }
-    }
-  })
-
-  .state('app.changeSeance', {
-    url: '/changeSeance',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/changeSeance.html',
-        controller: 'EditSeanceCtrl'
-      }
-    },
-    params: {
-      data: null
-    }
-  })
-
-  .state('app.seances', {
-    url: '/seances',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/seances.html',
-        controller: 'SeancesCtrl'
-      }
-    }
-  })
-
-
-  .state('app.newExercice', {
-    url: '/newExercice',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/newExercice.html',
-        controller: 'NewExerciceCtrl'
-      }
-    }
-  })
-
-  .state('app.exercices', {
-    url: '/exercices',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/exercices.html',
-        controller: 'ExercicesCtrl'
-      }
-    }
-  })
-
-  .state('app.changeExercice', {
-    url: '/changeExercice',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/changeExercice.html',
-        controller: 'EditExerciceCtrl'
-      }
-    },
-    params: {
-      data: null
+      programme: null
     }
   })
 
@@ -122,16 +120,29 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('app.workout-seance', {
-    url: '/workout-seance',
+  .state('app.workout_create', {
+    url: '/workout_create',
     views: {
       'menuContent': {
-        templateUrl: 'templates/workout-seance.html',
-        controller: 'WorkoutSeanceCtrl'
+        templateUrl: 'templates/workout_create.html',
+        controller: 'WorkoutCreateCtrl'
       }
     },
     params: {
-      data: null
+      seance: null
+    }
+  })
+
+  .state('app.workout_edit', {
+    url: '/workout_edit',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/workout_edit.html',
+        controller: 'WorkoutEditCtrl'
+      }
+    },
+    params: {
+      workout: null
     }
   })
 

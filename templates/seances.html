@@ -1,24 +1,19 @@
-
 <ion-view view-title="seances">
   <ion-nav-buttons side="right" class="has-header">
-    <button class="button button-icon icon ion-android-add" ui-sref="app.newSeance"></button>
+    <button class="button button-icon icon ion-android-add" ui-sref="app.seance_create"></button>
   </ion-nav-buttons>
   <ion-content>
-    
     <ion-list>
       <div ng-repeat="seance in seances">
         <ion-item  class="item-stable item-button-right">
           <i class="icon" ng-click="toggleGroup(seance)" ng-class="isGroupShown(seance) ? 'ion-minus' : 'ion-plus'"></i>
           <a ng-click="toggleGroup(seance)">{{seance.name}}</a>
           <div class="buttons">
-            <button class="button button-icon ion-wrench" ui-sref="app.changeSeance({data : seance})"> </button>
-            <button class="button button-icon ion-trash-b" ng-click="delete(seance)"> </button>
+            <button class="button button-icon ion-wrench" ui-sref="app.seance_edit({seance : seance})"> </button>
+            <button class="button button-icon ion-trash-b" ng-click="remove(seance)"> </button>
           </div>
         </ion-item>
         <ion-list class="item-accordion" ng-show="isGroupShown(seance)">
-          <ion-item>
-            Description : {{seance.description}}
-          </ion-item>
           <ion-item>
           Exercices :
             <ion-item ng-repeat="exercice in seance.exercices">

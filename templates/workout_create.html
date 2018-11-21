@@ -1,0 +1,103 @@
+<ion-view view-title="{{workout.name}}">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-icon icon ion-checkmark" ng-click="save()"></button>
+  </ion-nav-buttons>
+  <ion-content>
+    <form>
+      <ion-list>
+
+        <ion-item class="item-divider item-dark">Informations :</ion-item>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            type
+          </div>
+          <select ng-msodel="search.type">
+            <option value="Strenght">Strenght</option>
+            <option selected value="Mass" selected>Mass</option>
+            <option value="Endurance">Endurance</option>
+          </select>
+        </label>
+
+        <ion-item class="item-divider item-dark">Exercices :</ion-item>
+
+        <ion-list>
+          <div ng-repeat="exercice in workout.exercices ">
+            <ion-item class="item-button-right"ng-click="toggleGroup(exercice)"ng-class="{active: isGroupShown(exercice)}">
+              <i class="icon" ng-class="isGroupShown(exercice) ? 'ion-minus' : 'ion-plus'"></i>
+              <div class="buttons">
+                <button class="button button-icon ion-checkmark " ng-class="updateIconExo(exercice) ? 'button-ok' : 'button-nok'"> </button>
+                <button class="button button-icon ion-trash-b" ng-click="removeExercice(exercice)"> </button>
+              </div>
+              {{exercice.name}}
+            </ion-item>
+            <ion-list class="item-accordion" ng-show="isGroupShown(exercice)">
+              <ion-item>
+               Description : {{exercice.description}}
+              </ion-item>
+              <ion-item>
+                Type : {{exercice.type}}
+              </ion-item>
+              <label class="item item-input ">
+                <span class="input-label">Sets </span>
+                <input type="number" min="0" max="10" ng-model="exercice.nb_sets" ng-change="updateSets(exercice)" placeholder="...">
+              </label>
+              <div ng-repeat="set in exercice.sets track by $index">
+                <label class="item item-input">
+                  <span class="input-label">Reps</span>
+                  <input type="number" ng-model="set.rep" placeholder="...">
+                  <span class="input-label">Weight</span>
+                  <input type="number" ng-model="set.weight" placeholder="...">
+                </label>
+              </div>
+              <!-- <ion-item>
+                Muscles :
+                <ion-item ng-repeat="muscle in exercice.groupes">
+                  {{muscle}}
+                </ion-item>
+              </ion-item> -->
+            </ion-list>
+          </div>
+        </ion-list>
+
+        <ion-item class="item-divider item-dark">Search :</ion-item>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Corps
+          </div>
+          <select ng-model="selected.corps" ng-options="key for (key, value) in groups">
+          </select>
+        </label>
+        <label class="item item-input item-select" ng-hide="!selected.corps ">
+          <div class="input-label">
+            Muscle
+          </div>
+          <select ng-model="selected.muscle" ng-options="muscle for muscle in selected.corps">
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Type
+          </div>
+          <select ng-model="search.type" ng-options="type for type in types">
+          </select>
+        </label>
+
+        <ion-item class="item-divider item-dark">Add exercices :</ion-item>
+
+        <ion-list>
+          <ion-item class="item-button-right" ng-repeat="exercice in exercices | difference: workout.exercices | toArray:false | filter: { type : search.type, groupes : selected.muscle, hide : false  } ">
+            <div class="buttons">
+              <button class="button button-icon ion-archive" ng-click="addExercice(exercice)"> </button>
+            </div>
+            {{exercice.name}}
+          </ion-item>
+        </ion-list>
+
+      </ion-list>
+      <div class="button-bar ">
+        <a class="button button-block button-dark" ui-sref="app.workout">cancel</a>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

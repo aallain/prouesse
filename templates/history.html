@@ -1,12 +1,12 @@
 <ion-view view-title="History">
   <ion-content>
     <ion-list>
-      <div ng-repeat="workout in workoutHistory">
+      <div ng-repeat="workout in workouts">
         <ion-item  class="item-stable item-button-right"">
           <i class="icon" ng-click="toggleGroup(workout)" ng-class="isGroupShown(workout) ? 'ion-minus' : 'ion-plus'"></i>
           <a ng-click="toggleGroup(workout)">{{workout.name}}</a>
           <div class="buttons">
-            <button class="button button-icon ion-wrench" ui-sref="app.workout-seance({data : workout})"> </button>
+            <button class="button button-icon ion-wrench" ui-sref="app.workout_edit({data : workout})"> </button>
             <button class="button button-icon ion-trash-b" ng-click="delete(workout)"> </button>
           </div>
         </ion-item>
