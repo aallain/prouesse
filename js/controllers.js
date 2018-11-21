@@ -132,6 +132,7 @@ angular.module('app.controllers', [])
       $scope.exercices = ExerciceFactory.exercices();
       $scope.seances = SeanceFactory.seances();
       $scope.groups = ExerciceFactory.groups();
+      $scope.types = ExerciceFactory.types();
     });
 
     $scope.removeExercice = function(exercice){
@@ -157,12 +158,11 @@ angular.module('app.controllers', [])
 .controller('SeanceEditCtrl', function($scope,  $state,$stateParams,SeanceFactory, ExerciceFactory) {
   $scope.$on("$ionicView.enter", function(){
     $scope.seance = $stateParams.seance;
-    console.log($scope.seance)
     $scope.seance.exercices = $stateParams.seance.exercices;
     $scope.exercices = ExerciceFactory.exercices();
     $scope.seances = SeanceFactory.seances();
     $scope.groups = ExerciceFactory.groups();
-
+    $scope.types = ExerciceFactory.types();
   });
 
   $scope.save = function(){
@@ -304,6 +304,7 @@ angular.module('app.controllers', [])
     $scope.workout.name += '-' + getCurrentDate();
     $scope.exercices = ExerciceFactory.exercices();
     $scope.groups = ExerciceFactory.groups();
+    $scope.types = ExerciceFactory.types();
     $scope.stop = $interval(()=>{
       if (Object.keys($scope.workout).length !== 0) {
         WorkoutFactory.createOrUpdate($scope.workout);
@@ -389,6 +390,7 @@ angular.module('app.controllers', [])
     $scope.set = {};
     $scope.exercices = ExerciceFactory.exercices();
     $scope.groups = ExerciceFactory.groups();
+    $scope.types = ExerciceFactory.types();
   });
 
 
@@ -460,7 +462,6 @@ angular.module('app.controllers', [])
   $scope.$on("$ionicView.enter", function(){
     $scope.programmes =  ProgrammeFactory.programmes();
     $scope.workouts = WorkoutFactory.workouts();
-    console.log($scope.workoutHistory);
   });
   $scope.toggleGroup = function(list) {
     if ($scope.isGroupShown(list)) {

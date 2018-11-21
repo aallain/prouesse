@@ -6,7 +6,7 @@
           <i class="icon" ng-click="toggleGroup(workout)" ng-class="isGroupShown(workout) ? 'ion-minus' : 'ion-plus'"></i>
           <a ng-click="toggleGroup(workout)">{{workout.name}}</a>
           <div class="buttons">
-            <button class="button button-icon ion-wrench" ui-sref="app.workout_edit({data : workout})"> </button>
+            <button class="button button-icon ion-wrench" ui-sref="app.workout_edit({workout : workout})"> </button>
             <button class="button button-icon ion-trash-b" ng-click="delete(workout)"> </button>
           </div>
         </ion-item>

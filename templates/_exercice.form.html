@@ -1,0 +1,43 @@
+<form>
+  <ion-item class="item-divider item-dark">Informations :</ion-item>
+  <div class="list">
+    <label class="item item-input item-label">
+      <span class="input-label">Name</span>
+      <input type="text" ng-model="exercice.name" placeholder="...">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Description</span>
+      <textarea ng-model="exercice.description" placeholder="..."></textarea>
+    </label>
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Type
+      </div>
+      <select ng-model="exercice.type" ng-options="type for type in types">
+      </select>
+    </label>
+
+    <ion-item class="item-divider item-dark">Muscles :</ion-item>
+    <ion-list  >
+      <div ng-repeat="(group, muscles) in groups">
+        <ion-item class="item-stable"
+                  ng-click="toggleGroup(group)"
+                  ng-class="{active: isGroupShown(group)}">
+          <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+          &nbsp;
+          {{group}}
+        </ion-item>
+        <ion-item class="item-accordion" ng-repeat="muscle in muscles" ng-show="isGroupShown(group)">
+          <!-- <ion-checkbox ng-model="item.text">{{item}}</ion-checkbox> -->
+          <label class="checkbox">
+            <input checklist-model="exercice.groups" type="checkbox" checklist-value="muscle">
+          </label>
+          {{muscle}}
+        </ion-item>
+      </div>
+    </ion-list>
+    <div class="button-bar ">
+      <a class="button button-block button-dark" ui-sref="app.exercices">cancel</a>
+    </div>
+  </div>
+</form>
