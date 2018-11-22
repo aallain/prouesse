@@ -141,3 +141,34 @@ angular.module('app.directives', [])
   };
 }])
 
+.directive("exerciceForm", function(){
+  return {
+    restrict: 'EA',
+    replace: true,
+    templateUrl: 'templates/_exercice.form.html',
+  }
+})
+
+.directive("seanceForm", function(){
+  return {
+    restrict: 'EA',
+    replace: true,
+    templateUrl: 'templates/_seance.form.html',
+  }
+})
+
+.directive("programmeForm", function(){
+  return {
+    restrict: 'EA',
+    replace: true,
+    templateUrl: 'templates/_programme.form.html',
+  }
+})
+
+.directive("workoutForm", function(){
+  return {
+    restrict: 'EA',
+    replace: true,
+    templateUrl: 'templates/_workout.form.html',
+  }
+})
