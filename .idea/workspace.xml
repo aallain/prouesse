@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="319cfd01-ceb7-49f9-9eb0-6ed509926325" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/directives.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/directives.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/exercice_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/exercice_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/exercice_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/exercice_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/programme_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/programme_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/programme_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/programme_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/seance_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/seance_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/seance_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/seance_edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/workout_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/workout_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/workout_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/workout_edit.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -69,7 +60,7 @@
         <entry file="file://$PROJECT_DIR$/templates/programmes.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -78,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/templates/workouts.html">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="32" lean-forward="true" selection-start-column="32" selection-end-column="32" />
+              <caret column="32" selection-start-column="32" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -87,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/templates/_workout.form.html">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+              <caret column="10" selection-start-column="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -248,7 +239,7 @@
       <workItem from="1542786494239" duration="6693000" />
       <workItem from="1542801302668" duration="5814000" />
       <workItem from="1542826853261" duration="7853000" />
-      <workItem from="1545471090012" duration="10807000" />
+      <workItem from="1545471090012" duration="11301000" />
     </task>
     <task id="LOCAL-00001" summary="hey">
       <created>1542832874915</created>
@@ -275,7 +266,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35198000" />
+    <option name="totallyTimeSpent" value="35692000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -288,9 +279,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1472" height="1047" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15062761" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15062761" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -302,7 +292,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.08785249" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286334" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33296824" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33296824" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -455,14 +445,14 @@
     <entry file="file://$PROJECT_DIR$/templates/programmes.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="20" column="23" lean-forward="true" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/workouts.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="32" lean-forward="true" selection-start-column="32" selection-end-column="32" />
+          <caret column="32" selection-start-column="32" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -547,7 +537,7 @@
     <entry file="file://$PROJECT_DIR$/templates/_workout.form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
         </state>
       </provider>
     </entry>
