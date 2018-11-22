@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="319cfd01-ceb7-49f9-9eb0-6ed509926325" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/controllers.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/controllers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/filters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/services.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_programme.form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_programme.form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_seance.form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_seance.form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_workout.form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_workout.form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/menu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/programmes.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/programmes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/seances.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/seances.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/workout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/workouts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/workout_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/workout_create.html" afterDir="false" />
-    </list>
+    <list default="true" id="319cfd01-ceb7-49f9-9eb0-6ed509926325" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -276,7 +262,7 @@
       <workItem from="1542786494239" duration="6693000" />
       <workItem from="1542801302668" duration="5814000" />
       <workItem from="1542826853261" duration="7853000" />
-      <workItem from="1545471090012" duration="9025000" />
+      <workItem from="1545471090012" duration="9301000" />
     </task>
     <task id="LOCAL-00001" summary="hey">
       <created>1542832874915</created>
@@ -292,11 +278,18 @@
       <option name="project" value="LOCAL" />
       <updated>1542834089544</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="hey">
+      <created>1545482656765</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1545482656765</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33416000" />
+    <option name="totallyTimeSpent" value="33692000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
