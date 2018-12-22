@@ -24,12 +24,22 @@ angular.module('app.filters', [])
 
 .filter('difference', [function() {
   // TODO optimiser
-    return function(arr1, arr2){
-      arr3 = {};
-      angular.forEach(arr1, (obj1, key) => {
-        obj1.hide = key in arr2;
-      });
-      // console.log(arr1);
-      return arr1;
-    }
+  return function(arr1, arr2){
+    angular.forEach(arr1, (obj1, key) => {
+      obj1.hide = key in arr2;
+    });
+    // console.log(arr1);
+    return arr1;
+  }
+}])
+
+.filter('differenceName', [function() {
+  // TODO optimiser
+  return function(arr1, arr2){
+    angular.forEach(arr1, (obj1) => {
+      obj1.hide = arr2.indexOf(obj1.name) !== -1;
+    });
+    // TODO faire au propre le filter
+    return arr1;
+  }
 }])

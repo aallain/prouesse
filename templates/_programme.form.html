@@ -11,15 +11,15 @@
   <ion-list>
     <ion-item class="item-button-right" ng-repeat="seance in programme.seances ">
       <div class="buttons">
-        <button class="button button-icon ion-trash-b " ng-click="deleteSeance(seance)"> </button>
+        <button class="button button-icon ion-trash-b " ng-click="removeSeance(seance)"> </button>
       </div>
-      {{seance.name}}
+      {{seance}}
     </ion-item>
   </ion-list>
 
   <ion-item class="item-divider item-dark">Add seances :</ion-item>
 
-  <ion-item class="item-button-right" ng-repeat="seance in seances | difference: programme.seances| toArray:false | filter: { hide : false }">
+  <ion-item class="item-button-right" ng-repeat="seance in seances | toArray:false| differenceName: programme.seances | filter: { hide : false }">
     <div class="buttons">
       <button class="button button-icon ion-archive"  ng-click="addSeance(seance)"> </button>
     </div>
@@ -27,7 +27,7 @@
   </ion-item>
 
   <div class="button-bar ">
-    <a class="button button-block button-dark" ui-sref="app.programmes">cancel</a>
+    <a class="button button-block button-dark" ng-click="$ionicGoBack()">cancel</a>
   </div>
 
 

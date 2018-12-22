@@ -1,4 +1,4 @@
-<ion-view view-title="Workout">  
+<ion-view view-title="Workouts">
   <ion-content>
     <ion-list>
       <div ng-repeat="programme in programmes">
@@ -14,9 +14,9 @@
           </ion-item>
           <ion-item>
             Seances :
-            <ion-item ng-repeat="seance in programme.seances" class="item-stable item-button-right">
-              <button class="button button-icon ion-arrow-right-c" ui-sref="app.workout_create({seance: seance})"> </button>
-              {{seance.name}}
+            <ion-item ng-repeat="seance_name in programme.seances" class="item-stable item-button-right">
+              <button class="button button-icon ion-arrow-right-c" ui-sref="app.workout_create({seance_name: seance_name})"> </button>
+              {{seance_name}}
             </ion-item>
           </ion-item>
         </ion-list>

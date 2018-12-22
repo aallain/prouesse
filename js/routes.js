@@ -110,12 +110,12 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('app.workout', {
-    url: '/workout',
+  .state('app.workouts', {
+    url: '/workouts',
     views: {
       'menuContent': {
-        templateUrl: 'templates/workout.html',
-        controller: 'WorkoutCtrl'
+        templateUrl: 'templates/workouts.html',
+        controller: 'WorkoutsCtrl'
       }
     }
   })
@@ -129,7 +129,7 @@ angular.module('app.routes', [])
       }
     },
     params: {
-      seance: null
+      seance_name: null
     }
   })
 

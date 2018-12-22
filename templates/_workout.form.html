@@ -57,6 +57,13 @@
 
   <label class="item item-input item-select">
     <div class="input-label">
+      Type
+    </div>
+    <select ng-model="search.type" ng-options="type for type in types">
+    </select>
+  </label>
+  <label class="item item-input item-select">
+    <div class="input-label">
       Corps
     </div>
     <select ng-model="selected.corps" ng-options="key for (key, value) in groups">
@@ -69,18 +76,11 @@
     <select ng-model="selected.muscle" ng-options="muscle for muscle in selected.corps">
     </select>
   </label>
-  <label class="item item-input item-select">
-    <div class="input-label">
-      Type
-    </div>
-    <select ng-model="search.type" ng-options="type for type in types">
-    </select>
-  </label>
 
   <ion-item class="item-divider item-dark">Add exercices :</ion-item>
 
   <ion-list>
-    <ion-item class="item-button-right" ng-repeat="exercice in exercices | difference: workout.exercices | toArray:false | filter: { type : search.type, groupes : selected.muscle, hide : false  } ">
+    <ion-item class="item-button-right" ng-repeat="exercice in exercices | difference: workout.exercices | toArray:false | filter: { type : search.type, groups : selected.muscle, hide : false  } ">
       <div class="buttons">
         <button class="button button-icon ion-archive" ng-click="addExercice(exercice)"> </button>
       </div>

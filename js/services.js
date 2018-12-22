@@ -42,12 +42,16 @@ angular.module('app.services', [])
     }
   };
 
-  let update = function(data){
-    $localStorage.exercices[data.name] = data;
+  let update = function(exercice){
+    $localStorage.exercices[exercice.name] = exercice;
   };
 
-  let remove = function(exerciceName){
-    delete $localStorage.exercices[exerciceName];
+  let remove = function(exercice_name){
+    delete $localStorage.exercices[exercice_name];
+  };
+
+  let get = function(exercice_name){
+    return $localStorage.exercices[exercice_name];
   };
 
   let init = function(){
@@ -60,6 +64,7 @@ angular.module('app.services', [])
   return{
     createOrUpdate : createOrUpdate,
     remove: remove,
+    get : get,
     types : () => {return types},
     groups : () => {return groups},
     exercices: ()=>{return $localStorage.exercices;},
@@ -96,8 +101,12 @@ angular.module('app.services', [])
     $localStorage.seances[data.name] = data;
   };
 
-  let remove = function(seancename){
-    delete $localStorage.seances[seancename];
+  let remove = function(seance_name){
+    delete $localStorage.seances[seance_name];
+  };
+
+  let get = function(seance_name){
+    return $localStorage.seances[seance_name];
   };
 
   return{
@@ -105,6 +114,7 @@ angular.module('app.services', [])
     remove: remove,
     update: update,
     createOrUpdate: createOrUpdate,
+    get : get,
     seances: ()=>{return $localStorage.seances;},
   };
 
